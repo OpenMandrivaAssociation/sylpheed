@@ -1,18 +1,19 @@
+%define major 2.4
 %define iconname sylpheed.png
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	2.3.0
+Version:	%{major}.1
 Release:	%mkrel 1
-Source0:	%{name}-%{version}.tar.bz2 
+Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 License:	GPL
 URL:		http://sylpheed.good-day.net/
-BuildRequires:	ImageMagick
+BuildRequires:	desktop-file-utils
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpgme-devel > 0.4.5
+BuildRequires:	imagemagick
 BuildRequires:	libpilot-link-devel
 BuildRequires:	openldap-devel
-BuildRequires:	desktop-file-utils
 Group:		Networking/Mail
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	sylpheed-main
