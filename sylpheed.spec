@@ -3,9 +3,10 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	%{major}.1
+Version:	%{major}.2
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
+Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
 License:	GPL
 URL:		http://sylpheed.good-day.net/
 BuildRequires:	desktop-file-utils
