@@ -3,7 +3,7 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	%{major}.3
+Version:	%{major}.4
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
@@ -61,22 +61,7 @@ convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 install -m 644 sylpheed.desktop $RPM_BUILD_ROOT%{_datadir}/applications
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat > $RPM_BUILD_ROOT%{_menudir}/%{name} <<EOF
-?package(%{name}):\
-command="%{name}"\
-icon="%{name}.png"\
-title="Sylpheed"\
-longtitle="A fast GTK+2 based Mail client"\
-needs="x11"\
-section="Internet/Mail" \
-xdg="true"
-EOF
-
 desktop-file-install --vendor="" \
---remove-category="Application" \
---add-category="GTK" \
---add-category="X-MandrivaLinux-Internet-Mail" \
 --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
  
 %{find_lang} %name
@@ -100,9 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{_datadir}/%{name}/faq/*/*.html  
 %{_bindir}/* 
 %{_datadir}/applications/*.desktop
-%{_menudir}/*
 %{_iconsdir}/%{iconname}
 %{_liconsdir}/%{iconname}
 %{_miconsdir}/%{iconname}
-
-
