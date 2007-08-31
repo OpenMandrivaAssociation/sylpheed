@@ -3,7 +3,7 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	%{major}.4
+Version:	%{major}.5
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
@@ -59,11 +59,10 @@ convert sylpheed.png -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
 convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-install -m 644 sylpheed.desktop $RPM_BUILD_ROOT%{_datadir}/applications
+desktop-file-install --vendor='' \
+	--dir=%buildroot%_datadir/applications \
+	sylpheed.desktop
 
-desktop-file-install --vendor="" \
---dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
- 
 %{find_lang} %name
  
 %post
