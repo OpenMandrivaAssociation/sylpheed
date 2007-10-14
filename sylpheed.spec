@@ -7,8 +7,8 @@ Version:	%{major}.7
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
-License:	GPL
-URL:		http://sylpheed.good-day.net/
+License:	GPLv2
+URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpgme-devel > 0.4.5
@@ -17,7 +17,7 @@ BuildRequires:	libpilot-link-devel
 BuildRequires:	openldap-devel
 Group:		Networking/Mail
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Provides:	sylpheed-main
+Provides:	sylpheed-main = %version-%release
 Provides:	sylpheed2
 Obsoletes:	sylpheed2
 
