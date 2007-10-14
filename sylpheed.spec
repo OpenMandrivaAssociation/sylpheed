@@ -3,7 +3,7 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	%{major}.5
+Version:	%{major}.7
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
@@ -77,12 +77,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog* NEWS README* INSTALL* TODO*
-%dir %{_datadir}/%{name}/*
-%dir %{_datadir}/%{name}/*/*
-%doc %dir %{_datadir}/%{name} 
-%doc %dir %{_datadir}/%{name}/manual/*/*
-%doc %{_datadir}/%{name}/faq/*/*.html  
-%{_bindir}/* 
+%{_bindir}/*
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/faq
+%lang(de) %doc %{_datadir}/%{name}/faq/de
+%lang(en) %doc %{_datadir}/%{name}/faq/en
+%lang(es) %doc %{_datadir}/%{name}/faq/es
+%lang(fr) %doc %{_datadir}/%{name}/faq/fr
+%lang(it) %doc %{_datadir}/%{name}/faq/it
+%dir %{_datadir}/%{name}/manual
+%lang(en) %doc %{_datadir}/%{name}/manual/en
+%lang(ja) %doc %{_datadir}/%{name}/manual/ja
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/%{iconname}
 %{_liconsdir}/%{iconname}
