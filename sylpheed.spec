@@ -7,6 +7,7 @@ Version:	%{major}.7
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
+Patch0:		sylpheed-2.4.7-fix-desktop.patch
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	desktop-file-utils
@@ -39,6 +40,7 @@ See 'README' for more information.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build 
 %configure2_5x --enable-gpgme \
