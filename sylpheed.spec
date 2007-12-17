@@ -17,7 +17,6 @@ BuildRequires:	imagemagick
 BuildRequires:	libpilot-link-devel
 BuildRequires:	openldap-devel
 Group:		Networking/Mail
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	sylpheed-main = %version-%release
 Provides:	sylpheed2
 Obsoletes:	sylpheed2
