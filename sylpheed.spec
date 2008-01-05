@@ -3,7 +3,7 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	%{major}.7
+Version:	%{major}.8
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 Source1:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2.asc
@@ -42,7 +42,7 @@ See 'README' for more information.
 %setup -q -n %{name}-%{version}
 %patch0 -p0
 
-%build 
+%build
 %configure2_5x --enable-gpgme \
 		--enable-jpilot \
 		--enable-ssl \
@@ -66,12 +66,12 @@ desktop-file-install --vendor='' \
 	sylpheed.desktop
 
 %{find_lang} %name
- 
+
 %post
 %update_menus
- 
+
 %postun
-%clean_menus  
+%clean_menus
 
 %clean
 rm -rf $RPM_BUILD_ROOT
