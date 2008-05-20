@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(en) %doc %{_datadir}/%{name}/manual/en
 %lang(ja) %doc %{_datadir}/%{name}/manual/ja
 %{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/%{name}.desktop
+%{_datadir}/pixmaps/%{name}.png
 %{_iconsdir}/%{iconname}
 %{_liconsdir}/%{iconname}
 %{_miconsdir}/%{iconname}
