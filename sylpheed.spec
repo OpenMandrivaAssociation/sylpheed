@@ -1,5 +1,5 @@
 %define major 2.5
-%define betaver rc
+%define betaver rc2
 %define iconname sylpheed.png
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
