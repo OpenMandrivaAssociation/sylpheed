@@ -1,12 +1,11 @@
 %define major 2.5
-%define betaver rc2
 %define iconname sylpheed.png
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
 Version:	%{major}.0
-Release:	%mkrel -c %betaver 1
-Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}%{betaver}.tar.bz2
+Release:	%mkrel 1
+Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	desktop-file-utils
@@ -38,7 +37,7 @@ This program is an X based fast e-mail client which has features
 See 'README' for more information.
 
 %prep
-%setup -q -n %{name}-%{version}%{betaver}
+%setup -q -n %{name}-%{version}
 
 %build
 %configure2_5x --enable-gpgme \
