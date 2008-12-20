@@ -1,4 +1,4 @@
-%define major 2.5
+%define major 2.6
 %define iconname sylpheed.png
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
@@ -6,6 +6,7 @@ Name:		sylpheed
 Version:	%{major}.0
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
+Patch0:		sylpheed-2.6.0-fix-str-fmt.patch
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	desktop-file-utils
@@ -38,6 +39,7 @@ See 'README' for more information.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
 %configure2_5x --enable-gpgme \
