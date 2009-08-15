@@ -1,6 +1,11 @@
 %define major 2.7
 %define iconname sylpheed.png
 
+%define libapi 0
+%define libmajor 0
+%define libname %mklibname %name %libapi %libmajor
+%define develname %mklibname -d %name
+
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
 Version:	%{major}.1
@@ -9,12 +14,12 @@ Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz
 Patch0:		sylpheed-2.6.0-fix-str-fmt.patch
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
-BuildRequires:	desktop-file-utils
 BuildRequires:	gtk+2-devel
 BuildRequires:	gpgme-devel > 0.4.5
 BuildRequires:	imagemagick
 BuildRequires:	libpilot-link-devel
 BuildRequires:	openldap-devel
+Requires:	curl
 Group:		Networking/Mail
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	sylpheed-main = %version-%release
@@ -37,6 +42,22 @@ This program is an X based fast e-mail client which has features
 	o XML-based address book
 See 'README' for more information.
 
+%package -n %libname
+Summary: Library files for %name
+Group: Networking/Mail
+
+%description -n %libname
+This package contains shared library files for %name.
+
+%package -n %develname
+Summary: Development files for %name
+Group: Networking/Mail
+Requires: %libname = %version
+Provides: %name-devel = %version-%release
+
+%description -n %develname
+This package contains development files for %name.
+
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p0
@@ -58,11 +79,6 @@ mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
 convert sylpheed.png -geometry 48x48 %{buildroot}%{_liconsdir}/%{iconname}
 convert sylpheed.png -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
 convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
-
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-desktop-file-install --vendor='' \
-	--dir=%buildroot%_datadir/applications \
-	sylpheed.desktop
 
 %{find_lang} %name
 
@@ -98,3 +114,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/%{iconname}
 %{_liconsdir}/%{iconname}
 %{_miconsdir}/%{iconname}
+
+%files -n %libname
+%defattr(-,root,root)
+%{_libdir}/*-%{libapi}.so.%{libmajor}
+%{_libdir}/*-%{libapi}.so.%{libmajor}.*
+
+%files -n %develname
+%defattr(-,root,root)
+%{_libdir}/*.so
+%{_libdir}/*.la
+%{_includedir}/%name
