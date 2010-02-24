@@ -2,7 +2,7 @@
 %define iconname sylpheed.png
 
 %define libapi 0
-%define libmajor 0
+%define libmajor 1
 %define libname %mklibname %name %libapi %libmajor
 %define develname %mklibname -d %name
 
