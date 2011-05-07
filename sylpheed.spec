@@ -8,7 +8,7 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	3.1.0
+Version:	3.1.1
 Release:	%mkrel 1
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 License:	GPLv2
