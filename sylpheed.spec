@@ -1,4 +1,4 @@
-%define major 3.1
+%define major %(echo %{version}|cut -d. -f1,2)
 %define iconname sylpheed.png
 
 %define libapi 0
@@ -8,19 +8,20 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	3.1.2
-Release:	%mkrel 1
+Version:	3.3.0
+Release:	%mkrel 2
 Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
-BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	gpgme-devel > 0.4.5
 BuildRequires:	imagemagick
 BuildRequires:	libpilot-link-devel
 BuildRequires:	openldap-devel
+BuildRequires:	pkgconfig(gtkspell-2.0)
+Patch0:		sylpheed-3.3.0-glib2.patch
 Requires:	curl
 Group:		Networking/Mail
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	sylpheed-main = %version-%release
 Provides:	sylpheed2
 Obsoletes:	sylpheed2
@@ -59,6 +60,7 @@ This package contains development files for %name.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x --enable-gpgme \
@@ -70,7 +72,6 @@ This package contains development files for %name.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %{makeinstall_std}
 
 mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
@@ -80,21 +81,7 @@ convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
 
 %{find_lang} %name
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog* NEWS README* INSTALL* TODO*
 %{_bindir}/*
 %dir %{_datadir}/%{name}
@@ -114,12 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_miconsdir}/%{iconname}
 
 %files -n %libname
-%defattr(-,root,root)
 %{_libdir}/*-%{libapi}.so.%{libmajor}
 %{_libdir}/*-%{libapi}.so.%{libmajor}.*
 
 %files -n %develname
-%defattr(-,root,root)
 %{_libdir}/*.so
-%{_libdir}/*.la
 %{_includedir}/%name

@@ -1,0 +1,24 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index cc0feb3..0a34da5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -125,6 +125,7 @@ libsylpheed_plugin_0_la_LDFLAGS = \
+ 
+ libsylpheed_plugin_0_la_LIBADD = \
+ 	$(GTK_LIBS) \
++	$(GLIB_LIBS) \
+ 	../libsylph/libsylph-0.la
+ 
+ EXTRA_DIST = \
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 8c0f154..b4e4232 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -331,6 +331,7 @@ libsylpheed_plugin_0_la_LDFLAGS = \
+ 
+ libsylpheed_plugin_0_la_LIBADD = \
+ 	$(GTK_LIBS) \
++	$(GLIB_LIBS) \
+ 	../libsylph/libsylph-0.la
+ 
+ 
