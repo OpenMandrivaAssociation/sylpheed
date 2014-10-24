@@ -16,7 +16,7 @@ URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	gpgme-devel > 0.4.5
 BuildRequires:	imagemagick
-BuildRequires:	libpilot-link-devel
+BuildRequires:	pkgconfig(pilot-link)
 BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(gtkspell-2.0)
 Patch0:		sylpheed-3.3.0-glib2.patch
