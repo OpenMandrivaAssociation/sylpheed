@@ -3,14 +3,14 @@
 
 %define libapi 0
 %define libmajor 1
-%define libname %mklibname %name %libapi %libmajor
-%define develname %mklibname -d %name
+%define libname %mklibname %{name} %libapi %libmajor
+%define develname %mklibname -d %{name}
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	3.3.0
-Release:	%mkrel 2
-Source0:	http://sylpheed.sraoss.jp/sylpheed/v%{major}/sylpheed-%{version}.tar.bz2
+Version:	3.4.2
+Release:	1
+Source0:	http://sylpheed.sraoss.jp/sylpheed/v3.4/%{name}-%{version}.tar.bz2
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	pkgconfig(gtk+-2.0)
@@ -22,7 +22,7 @@ BuildRequires:	pkgconfig(gtkspell-2.0)
 Patch0:		sylpheed-3.3.0-glib2.patch
 Requires:	curl
 Group:		Networking/Mail
-Provides:	sylpheed-main = %version-%release
+Provides:	sylpheed-main = %{version}-%{release}
 Provides:	sylpheed2
 Obsoletes:	sylpheed2
 
@@ -47,16 +47,16 @@ Summary: Library files for %name
 Group: Networking/Mail
 
 %description -n %libname
-This package contains shared library files for %name.
+This package contains shared library files for %{name}.
 
 %package -n %develname
 Summary: Development files for %name
 Group: Networking/Mail
-Requires: %libname = %version
-Provides: %name-devel = %version-%release
+Requires: %libname = %{version}
+Provides: %{name}-devel = %{version}-%{release}
 
 %description -n %develname
-This package contains development files for %name.
+This package contains development files for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -72,14 +72,14 @@ This package contains development files for %name.
 %make
 
 %install
-%{makeinstall_std}
+%makeinstall_std
 
 mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
 convert sylpheed.png -geometry 48x48 %{buildroot}%{_liconsdir}/%{iconname}
 convert sylpheed.png -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
 convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
 
-%{find_lang} %name
+%{find_lang} %{name}
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog* NEWS README* INSTALL* TODO*
@@ -106,4 +106,4 @@ convert sylpheed.png -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname}
 
 %files -n %develname
 %{_libdir}/*.so
-%{_includedir}/%name
+%{_includedir}/%{name}

@@ -1,3 +1,5 @@
-sources:
-  "sylpheed-3.1.1.tar.bz2": 1217c528f2362311922518a89b4d4866bfa09cd0
+removed_sources:
+  sylpheed-3.1.1.tar.bz2: 1217c528f2362311922518a89b4d4866bfa09cd0
   sylpheed-3.3.0.tar.bz2: 07b7dd7f0b58065b6f8db7a3b443240aade7da6a
+sources:
+  sylpheed-3.4.2.tar.bz2: 609e74dc7ec5d4d8904453455d9e561b8ebd5af1
