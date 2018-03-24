@@ -8,9 +8,9 @@
 
 Summary:	A GTK+2 based, lightweight, and fast e-mail client
 Name:		sylpheed
-Version:	3.4.2
-Release:	2
-Source0:	http://sylpheed.sraoss.jp/sylpheed/v3.4/%{name}-%{version}.tar.bz2
+Version:	3.7.0
+Release:	1
+Source0:	https://osdn.net/dl/sylpheed/%{name}-%{version}.tar.xz
 License:	GPLv2
 URL:		http://sylpheed.sraoss.jp/
 BuildRequires:	pkgconfig(gtk+-2.0)
@@ -19,7 +19,6 @@ BuildRequires:	imagemagick
 BuildRequires:	pkgconfig(pilot-link)
 BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(gtkspell-2.0)
-Patch0:		sylpheed-3.3.0-glib2.patch
 Requires:	curl
 Group:		Networking/Mail
 Provides:	sylpheed-main = %{version}-%{release}
@@ -60,7 +59,7 @@ This package contains development files for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+%apply_patches
 
 %build
 %configure2_5x --enable-gpgme \
