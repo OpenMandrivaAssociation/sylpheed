@@ -1,5 +1,6 @@
 %define major %(echo %{version}|cut -d. -f1,2)
 %define iconname sylpheed.png
+%define _disable_rebuild_configure 1
 
 %define libapi 0
 %define libmajor 1
@@ -62,7 +63,7 @@ This package contains development files for %{name}.
 %apply_patches
 
 %build
-%configure2_5x --enable-gpgme \
+%configure --enable-gpgme \
 		--enable-jpilot \
 		--enable-ssl \
 		--enable-ldap \
