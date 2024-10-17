@@ -13,7 +13,7 @@ Version:	3.7.0
 Release:	1
 Source0:	https://osdn.net/dl/sylpheed/%{name}-%{version}.tar.xz
 License:	GPLv2
-URL:		http://sylpheed.sraoss.jp/
+URL:		https://sylpheed.sraoss.jp/
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	gpgme-devel > 0.4.5
 BuildRequires:	imagemagick
