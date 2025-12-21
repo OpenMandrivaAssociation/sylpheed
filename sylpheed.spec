@@ -14,6 +14,11 @@ Release:	1
 Source0:	https://osdn.net/dl/sylpheed/%{name}-%{version}.tar.xz
 License:	GPLv2
 URL:		https://sylpheed.sraoss.jp/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	gpgme-devel > 0.4.5
 BuildRequires:	imagemagick
